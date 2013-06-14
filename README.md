@@ -10,7 +10,7 @@ Zabbix templates by panser
 </code>
 </pre>
 
-##Update
+##Git Pull
 <pre>
 <code>
 # WCOLL=/etc/pdsh/groups/all pdsh -l root "(cd /opt/zabbix-plugins/zabbix_panser; git pull)"

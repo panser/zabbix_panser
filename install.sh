@@ -14,7 +14,7 @@ ln -svf /opt/zabbix-plugins/zabbix_panser/glusterfs/panser_glusterfs.conf /etc/z
 ###
 # Linux
 ###
-ln -svf /opt/zabbix-plugins/zabbix_panser/glusterfs/linux/panser_linux.conf /etc/zabbix/zabbix_agentd.d/
+ln -svf /opt/zabbix-plugins/zabbix_panser/linux/panser_linux.conf /etc/zabbix/zabbix_agentd.d/
 
 ########################################################################
 ###
