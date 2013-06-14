@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FS=$(df -h|grep glusterfs|xargs|cut -d" " -f6)
+FS=$(cat /proc/mounts |grep gluster|cut -d" " -f2|uniq)
 echo "Touch $FS/glusterfs"
 touch $FS/glusterfs
 
