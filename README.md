@@ -1,0 +1,1 @@
+Zabbix tamplates by panser
