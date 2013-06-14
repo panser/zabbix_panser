@@ -1,1 +1,1 @@
-Zabbix tamplates by panser
+Zabbix templates by panser
