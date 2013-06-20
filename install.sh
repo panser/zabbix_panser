@@ -16,6 +16,13 @@ ln -svf /opt/zabbix-plugins/zabbix_panser/glusterfs/panser_glusterfs.conf /etc/z
 ###
 ln -svf /opt/zabbix-plugins/zabbix_panser/linux/panser_linux.conf /etc/zabbix/zabbix_agentd.d/
 
+###
+# iostat_nomanlab
+###
+ln -svf /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/panser_iostat_nomanlab.conf /etc/zabbix/zabbix_agentd.d/
+echo "*/1 * * * * root  sh /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/bin/iostat_collect.sh /tmp/disk.txt 15 > /dev/null" >> /etc/crontab
+
+
 ########################################################################
 ###
 # End

@@ -5,8 +5,9 @@ Zabbix templates by panser
 ##Install
 <pre>
 <code>
-# pdsh -w $HOSTNAME -l root "(cd /opt/zabbix-plugins/zabbix_panser; git clone https://github.com/panser/zabbix_panser.git)"
-# pdsh -w $HOSTNAME -l root sh /opt/zabbix-plugins/zabbix_panser/install.sh
+# mkdir -pv /opt/zabbix-plugins; cd /opt/zabbix-plugins
+# git clone https://github.com/panser/zabbix_panser.git
+# sh /opt/zabbix-plugins/zabbix_panser/install.sh
 </code>
 </pre>
 
