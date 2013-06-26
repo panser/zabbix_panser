@@ -7,6 +7,7 @@
 FS=$(cat /proc/mounts |grep gluster|cut -d" " -f2|uniq|head -1)
 echo "Touch $FS/glusterfs"
 touch $FS/glusterfs
+touch /glusterfs
 
 ln -svf /opt/zabbix-plugins/zabbix_panser/glusterfs/panser_glusterfs.conf /etc/zabbix/zabbix_agentd.d/
 
