@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-07-02T16:25:50Z</date>
+    <date>2013-07-02T16:56:26Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template_panser_raid</template>
-            <name>Template_panser_raid</name>
+            <template>Template_panser_disks</template>
+            <name>Template_panser_disks</name>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -18,7 +18,7 @@
             </groups>
             <applications>
                 <application>
-                    <name>panser_raid</name>
+                    <name>panser_disks</name>
                 </application>
             </applications>
             <items>
@@ -56,7 +56,46 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>panser_raid</name>
+                            <name>panser_disks</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>smartct: broken disk</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.run[for i in `\ls /dev/sd?`; do smartctl -A $i|grep FAILING_NOW;done|wc -l]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>panser_disks</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -70,8 +109,18 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template_panser_raid:system.run[cat /proc/mdstat | egrep '(U_|_U)' | wc -l].last(0)}#0</expression>
+            <expression>{Template_panser_disks:system.run[cat /proc/mdstat | egrep '(U_|_U)' | wc -l].last(0)}#0</expression>
             <name>{HOSTNAME}: mdadm array is broken</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template_panser_disks:system.run[for i in `\ls /dev/sd?`; do smartctl -A $i|grep FAILING_NOW;done|wc -l].last(0)}#0</expression>
+            <name>{HOSTNAME}: smartct disk is broken</name>
             <url/>
             <status>0</status>
             <priority>4</priority>
