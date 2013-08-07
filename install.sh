@@ -22,6 +22,7 @@ ln -svf /opt/zabbix-plugins/zabbix_panser/linux/panser_linux.conf /etc/zabbix/za
 # iostat_nomanlab
 ###
 ln -svf /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/panser_iostat_nomanlab.conf /etc/zabbix/zabbix_agentd.d/
+sed -i '/iostat_collect.sh/d' /etc/crontab
 echo "*/1 * * * * root  sh /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/bin/iostat_collect.sh /tmp/disk.txt 15 > /dev/null" >> /etc/crontab
 
 
