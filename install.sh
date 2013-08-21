@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir -pv /etc/zabbix/zabbix_agentd.d
 #######################################################################
 ###
 # GlusterFS
@@ -25,6 +26,11 @@ ln -svf /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/panser_iostat_nomanlab
 sed -i '/iostat_collect.sh/d' /etc/crontab
 echo "*/1 * * * * root  sh /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/bin/iostat_collect.sh /tmp/disk.txt 15 > /dev/null" >> /etc/crontab
 
+#######################################################################
+###
+# apc_ups_nut
+###
+ln -svf /opt/zabbix-plugins/zabbix_panser/apc_ups_nut/apc_ups_nut.conf /etc/zabbix/zabbix_agentd.d/
 
 ########################################################################
 ###
