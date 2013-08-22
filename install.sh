@@ -30,7 +30,7 @@ echo "*/1 * * * * root  sh /opt/zabbix-plugins/zabbix_panser/iostat_nomanlab/bin
 ###
 # apc_ups_nut
 ###
-ln -svf /opt/zabbix-plugins/zabbix_panser/apc_ups_nut/apc_ups_nut.conf /etc/zabbix/zabbix_agentd.d/
+ln -svf /opt/zabbix-plugins/zabbix_panser/apc_ups_nut/panser_apc_ups_nut.conf /etc/zabbix/zabbix_agentd.d/
 
 ########################################################################
 ###
